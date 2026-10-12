@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b5e">
+  <meta name="description" content="Conheça Noé — A Fé em Meio à Tempestade, um e-book infantil com uma história bíblica cheia de fé e aprendizado.">
+  <title>Noé — A Fé em Meio à Tempestade</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #19334b;
+      background: #fffaf2;
+      line-height: 1.6;
+    }
+    .top {
+      background: #173b5e;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+    }
+    header {
+      padding: 22px 18px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .hero {
+      padding: 30px 22px 44px;
+      text-align: center;
+      background: linear-gradient(180deg, #e8f5ff, #fffaf2);
+    }
+    .cover {
+      width: min(100%, 300px);
+      aspect-ratio: 3 / 4;
+      margin: 0 auto 28px;
+      border-radius: 18px;
+      background: #d6e9f5;
+      border: 1px solid #c3d8e6;
+      box-shadow: 0 14px 35px #173b5e20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      overflow: hidden;
+    }
+    .cover .ark { font-size: 76px; }
+    .cover strong {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      line-height: 1.2;
+      margin-top: 14px;
+    }
+    .cover span {
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 8vw, 43px);
+      line-height: 1.15;
+      margin: 0 auto 16px;
+      max-width: 620px;
+    }
+    .intro {
+      max-width: 530px;
+      margin: 0 auto 24px;
+      color: #53677a;
+    }
+    .button {
+      display: inline-block;
+      width: 100%;
+      max-width: 360px;
+      border: 0;
+      border-radius: 12px;
+      background: #e99442;
+      color: #17334b;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    section {
+      padding: 38px 22px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h2 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      line-height: 1.25;
+    }
+    .features {
+      display: grid;
+      gap: 14px;
+    }
+    .feature {
+      padding: 17px;
+      background: white;
+      border: 1px solid #eee5d9;
+      border-radius: 14px;
+    }
+    .feature strong { display: block; margin-bottom: 5px; }
+    .buy {
+      background: #edf5fa;
+      border-radius: 20px;
+      padding: 25px 20px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 15px 0 6px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #bdcbd5;
+      border-radius: 10px;
+      background: white;
+      font-size: 16px;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+    .small {
+      color: #647788;
+      font-size: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #647788;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top">Uma aventura bíblica para compartilhar em família</div>
+
+  <header>📖 HISTÓRIAS QUE ENSINAM A FÉ</header>
+
+  <main>
+    <div class="hero">
+      <div class="cover" role="img" aria-label="Representação provisória da capa do e-book">
+        <div class="ark">⛵</div>
+        <strong>Noé — A Fé em Meio à Tempestade</strong>
+        <span>UMA HISTÓRIA BÍBLICA INFANTIL</span>
+      </div>
+
+      <h1>Uma grande aventura de fé começa aqui!</h1>
+      <p class="intro">
+        Apresente às crianças a história de Noé em uma leitura
+        acessível, envolvente e repleta de ensinamentos bíblicos.
+      </p>
+      <a class="button" href="#comprar">QUERO CONHECER O E-BOOK</a>
+    </div>
+
+    <section>
+      <h2>O que a criança vai aprender?</h2>
+      <div class="features">
+        <div class="feature">
+          <strong>🙏 Fé e confiança em Deus</strong>
+          Entender a importância de confiar em Deus mesmo nos
+          momentos difíceis.
+        </div>
+        <div class="feature">
+          <strong>❤️ Obediência e coragem</strong>
+          Aprender com as escolhas de Noé e sua família.
+        </div>
+        <div class="feature">
+          <strong>📚 Uma leitura para compartilhar</strong>
+          Um momento especial entre pais, responsáveis e crianças.
+        </div>
+      </div>
+    </section>
+
+    <section id="comprar">
+      <div class="buy">
+        <h2>Adquira seu e-book</h2>
+        <p>Preencha seus dados para continuar com a compra.</p>
+
+        <div class="price">R$ 19,90</div>
+        <p class="small">Pagamento único · E-book digital em PDF</p>
+
+        <form id="pedido">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" autocomplete="name"
+            placeholder="Digite seu nome" required>
+
+          <label for="email">Seu melhor e-mail</label>
+          <input id="email" name="email" type="email"
+            autocomplete="email" placeholder="voce@email.com" required>
+
+          <p class="small">
+            Usaremos esses dados para identificar seu pedido e
+            entregar o produto. Consulte nossa política de privacidade
+            antes de concluir a compra.
+          </p>
+
+          <button class="button" type="submit">
+            CONTINUAR PARA PAGAMENTO
+          </button>
+          <p id="aviso" class="small" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 · E-book infantil cristão · Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("pedido").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("aviso").textContent =
+        "Estamos preparando o checkout seguro. A integração de pagamento ainda será configurada.";
+    });
+  </script>
+</body>
+</html>
