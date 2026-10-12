@@ -4,227 +4,951 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#173b5e">
-  <meta name="description" content="Conheça Noé — A Fé em Meio à Tempestade, um e-book infantil com uma história bíblica cheia de fé e aprendizado.">
-  <title>Noé — A Fé em Meio à Tempestade</title>
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Conheça Noé — A Fé em Meio à Tempestade. Um e-book infantil bíblico com história, aprendizado e atividades para compartilhar em família.">
+  <title>Noé — A Fé em Meio à Tempestade | E-book Infantil</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    :root {
+      --azul: #102d4e;
+      --azul-claro: #1b4c7b;
+      --amarelo: #ffcc33;
+      --preto: #07111f;
+      --branco: #ffffff;
+      --cinza: #aebed0;
+      --fundo: #f4f7fb;
+      --texto: #14263a;
+      --borda: #dce4ed;
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: #19334b;
-      background: #fffaf2;
-      line-height: 1.6;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .top {
-      background: #173b5e;
-      color: white;
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 100% - 40px);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--amarelo);
+      color: var(--preto);
       text-align: center;
-      padding: 12px;
-      font-size: 13px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .4px;
     }
+
     header {
-      padding: 22px 18px;
-      text-align: center;
-      font-weight: bold;
-      letter-spacing: 1px;
+      background: var(--preto);
+      color: var(--branco);
+      border-bottom: 1px solid #ffffff16;
     }
-    .hero {
-      padding: 30px 22px 44px;
-      text-align: center;
-      background: linear-gradient(180deg, #e8f5ff, #fffaf2);
-    }
-    .cover {
-      width: min(100%, 300px);
-      aspect-ratio: 3 / 4;
-      margin: 0 auto 28px;
-      border-radius: 18px;
-      background: #d6e9f5;
-      border: 1px solid #c3d8e6;
-      box-shadow: 0 14px 35px #173b5e20;
+
+    .nav {
+      min-height: 76px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+    }
+
+    .brand span {
+      color: var(--amarelo);
+    }
+
+    .nav-link {
+      color: var(--amarelo);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 85% 20%, #174f7c 0%, transparent 42%),
+        linear-gradient(140deg, #07111f 0%, #102d4e 70%, #07111f 100%);
+      color: var(--branco);
+      padding: 65px 0 76px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: #ffcc3312;
+      filter: blur(65px);
+      border-radius: 50%;
+      top: 15%;
+      left: -160px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--amarelo);
+      border: 1px solid #ffcc3350;
+      background: #ffcc3310;
+      border-radius: 100px;
+      padding: 7px 13px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.17;
+    }
+
+    h1 {
+      font-size: clamp(35px, 5vw, 60px);
+      letter-spacing: -1.8px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--amarelo);
+    }
+
+    .hero-description {
+      color: #d0dbea;
+      font-size: 16px;
+      max-width: 540px;
+      margin-bottom: 27px;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 30px;
+      list-style: none;
+      color: #edf4fb;
+      font-size: 14px;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .check {
+      color: var(--amarelo);
+      font-weight: 900;
+    }
+
+    .button {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 22px;
-      overflow: hidden;
-    }
-    .cover .ark { font-size: 76px; }
-    .cover strong {
-      font-family: Georgia, serif;
-      font-size: 28px;
-      line-height: 1.2;
-      margin-top: 14px;
-    }
-    .cover span {
-      margin-top: 12px;
-      font-size: 13px;
-    }
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(30px, 8vw, 43px);
-      line-height: 1.15;
-      margin: 0 auto 16px;
-      max-width: 620px;
-    }
-    .intro {
-      max-width: 530px;
-      margin: 0 auto 24px;
-      color: #53677a;
-    }
-    .button {
-      display: inline-block;
-      width: 100%;
-      max-width: 360px;
+      gap: 9px;
+      text-align: center;
+      text-decoration: none;
       border: 0;
       border-radius: 12px;
-      background: #e99442;
-      color: #17334b;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
+      padding: 16px 22px;
+      background: var(--amarelo);
+      color: var(--preto);
+      font-size: 14px;
+      font-weight: 900;
       cursor: pointer;
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        background .22s ease;
     }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px #ffcc3338;
+      background: #ffda63;
+    }
+
+    .button:active {
+      transform: scale(.98);
+    }
+
+    .button-full {
+      width: 100%;
+    }
+
+    .button-dark {
+      background: var(--azul);
+      color: white;
+    }
+
+    .button-dark:hover {
+      background: var(--azul-claro);
+      box-shadow: 0 10px 26px #102d4e25;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: #afc1d4;
+      margin-top: 13px;
+    }
+
+    .book-wrap {
+      position: relative;
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      animation: bookFloat 5s ease-in-out infinite;
+    }
+
+    .book-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 12% 4% 2%;
+      background: var(--amarelo);
+      opacity: .15;
+      filter: blur(50px);
+      border-radius: 50%;
+    }
+
+    .book-cover {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-height: 610px;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 30px #00000070);
+      border-radius: 8px;
+    }
+
+    @keyframes bookFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-9px) rotate(.5deg); }
+    }
+
+    .trust-bar {
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 18px 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      text-align: center;
+    }
+
+    .trust-item {
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .trust-item span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
     section {
-      padding: 38px 22px;
-      max-width: 700px;
-      margin: auto;
+      padding: 76px 0;
     }
-    h2 {
-      font-family: Georgia, serif;
-      font-size: 28px;
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 38px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: #936b00;
+      background: #ffcc3326;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+      color: var(--preto);
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p {
+      color: #607186;
+      font-size: 15px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 25px 22px;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-7px);
+      border-color: #f0c43f;
+      box-shadow: 0 18px 36px #102d4e12;
+    }
+
+    .benefit-icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      background: #ffcc3328;
+      border-radius: 14px;
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+
+    .benefit-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--azul);
+    }
+
+    .benefit-card p {
+      font-size: 14px;
+      color: #607186;
+    }
+
+    .chapters {
+      background: #e9f0f7;
+    }
+
+    .chapter-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      gap: 13px;
+    }
+
+    .chapter {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 19px;
+      background: white;
+      border: 1px solid #dce5ef;
+      border-radius: 14px;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .chapter:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 22px #102d4e0d;
+    }
+
+    .chapter-number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--azul);
+      color: var(--amarelo);
+      font-weight: 900;
+    }
+
+    .chapter h3 {
+      font-size: 16px;
+      color: var(--azul);
+      margin: 2px 0 6px;
+    }
+
+    .chapter p {
+      color: #607186;
+      font-size: 13px;
+    }
+
+    .solidarity {
+      background: var(--preto);
+      color: white;
+      padding: 65px 0;
+    }
+
+    .solidarity-box {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 25px;
+      border: 1px solid #ffcc3350;
+      background: linear-gradient(120deg, #102d4e, #0b192a);
+      border-radius: 22px;
+      padding: 30px;
+    }
+
+    .solidarity-icon {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      background: var(--amarelo);
+      color: var(--preto);
+      border-radius: 20px;
+      font-size: 35px;
+    }
+
+    .solidarity h2 {
+      color: var(--amarelo);
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 12px;
+    }
+
+    .solidarity p {
+      color: #d2dfec;
+      font-size: 14px;
+    }
+
+    .solidarity strong {
+      color: white;
+    }
+
+    .purchase {
+      background:
+        radial-gradient(ellipse at 0% 100%, #d7e9fb 0%, transparent 42%),
+        var(--fundo);
+    }
+
+    .purchase-grid {
+      display: grid;
+      grid-template-columns: .85fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .purchase-info {
+      padding: 15px 0;
+    }
+
+    .purchase-info h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--preto);
+      margin-bottom: 17px;
+    }
+
+    .purchase-info > p {
+      color: #607186;
+      margin-bottom: 23px;
+      font-size: 15px;
+    }
+
+    .purchase-points {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      font-size: 14px;
+    }
+
+    .purchase-points li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 27px;
+      box-shadow: 0 18px 50px #102d4e0d;
+    }
+
+    .price-card h3 {
+      font-size: 23px;
+      color: var(--azul);
+      margin-bottom: 6px;
+    }
+
+    .price-description {
+      color: #65768a;
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .price {
+      color: var(--preto);
+      font-size: 43px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
       line-height: 1.25;
     }
-    .features {
-      display: grid;
-      gap: 14px;
-    }
-    .feature {
-      padding: 17px;
-      background: white;
-      border: 1px solid #eee5d9;
-      border-radius: 14px;
-    }
-    .feature strong { display: block; margin-bottom: 5px; }
-    .buy {
-      background: #edf5fa;
-      border-radius: 20px;
-      padding: 25px 20px;
-    }
-    label {
-      display: block;
+
+    .price small {
       font-size: 14px;
-      font-weight: bold;
-      margin: 15px 0 6px;
+      letter-spacing: 0;
+      font-weight: 500;
     }
-    input {
+
+    .price-caption {
+      font-size: 12px;
+      color: #607186;
+      margin: 6px 0 20px;
+    }
+
+    .form-divider {
+      border: 0;
+      border-top: 1px solid #e7edf3;
+      margin: 22px 0;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      color: #243950;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .field input {
+      display: block;
       width: 100%;
       padding: 14px;
-      border: 1px solid #bdcbd5;
+      background: #fbfdff;
+      color: var(--texto);
+      border: 1px solid #cbd6e1;
       border-radius: 10px;
-      background: white;
-      font-size: 16px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
     }
-    .price {
-      font-size: 36px;
-      font-weight: bold;
-      margin: 8px 0;
+
+    .field input:focus {
+      border-color: var(--azul-claro);
+      box-shadow: 0 0 0 3px #1b4c7b18;
     }
-    .small {
-      color: #647788;
-      font-size: 12px;
+
+    .privacy-note {
+      color: #738296;
+      font-size: 11px;
+      margin: 14px 0 18px;
     }
-    footer {
+
+    .form-message {
+      display: none;
+      padding: 13px;
+      margin-top: 14px;
+      background: #fff4ce;
+      color: #594400;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .whatsapp-note {
       text-align: center;
-      padding: 25px;
-      color: #647788;
       font-size: 12px;
+      color: #64768a;
+      margin-top: 16px;
+    }
+
+    .whatsapp-note a {
+      color: var(--azul);
+      font-weight: 800;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      padding: 18px 20px;
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 13px;
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--azul);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    details p {
+      color: #607186;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .final-cta {
+      text-align: center;
+      background: var(--azul);
+      color: white;
+      padding: 58px 20px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(27px, 4vw, 39px);
+      margin-bottom: 14px;
+    }
+
+    .final-cta p {
+      color: #d5e1ee;
+      margin: 0 auto 24px;
+      max-width: 550px;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      background: var(--preto);
+      color: #9fb0c3;
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--amarelo);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 32px, 540px);
+      }
+
+      .nav {
+        min-height: 62px;
+      }
+
+      .hero {
+        padding: 43px 0 53px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-points {
+        display: inline-grid;
+        text-align: left;
+      }
+
+      .hero-copy .button {
+        width: 100%;
+      }
+
+      .book-wrap {
+        max-width: 330px;
+      }
+
+      .book-cover {
+        max-height: 470px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .trust-item span {
+        font-size: 19px;
+        margin: 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .benefit-card {
+        padding: 21px;
+      }
+
+      .solidarity {
+        padding: 45px 0;
+      }
+
+      .solidarity-box {
+        grid-template-columns: 1fr;
+        padding: 23px;
+        gap: 17px;
+      }
+
+      .solidarity-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .purchase-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .price-card {
+        padding: 22px 18px;
+      }
+
+      .chapter {
+        padding: 15px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
-<body>
-  <div class="top">Uma aventura bíblica para compartilhar em família</div>
 
-  <header>📖 HISTÓRIAS QUE ENSINAM A FÉ</header>
+<body>
+  <div class="topbar">
+    📖 E-BOOK INFANTIL BÍBLICO · UMA HISTÓRIA DE FÉ E ESPERANÇA
+  </div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">NOÉ <span>· E-BOOK</span></div>
+      <a class="nav-link" href="#comprar">ADQUIRIR E-BOOK ↓</a>
+    </div>
+  </header>
 
   <main>
-    <div class="hero">
-      <div class="cover" role="img" aria-label="Representação provisória da capa do e-book">
-        <div class="ark">⛵</div>
-        <strong>Noé — A Fé em Meio à Tempestade</strong>
-        <span>UMA HISTÓRIA BÍBLICA INFANTIL</span>
-      </div>
+    <section class="hero">
+      <div class="container hero-grid">
 
-      <h1>Uma grande aventura de fé começa aqui!</h1>
-      <p class="intro">
-        Apresente às crianças a história de Noé em uma leitura
-        acessível, envolvente e repleta de ensinamentos bíblicos.
-      </p>
-      <a class="button" href="#comprar">QUERO CONHECER O E-BOOK</a>
+        <div class="hero-copy">
+          <div class="eyebrow">✦ UMA AVENTURA BÍBLICA INFANTIL</div>
+
+          <h1>
+            Noé — A Fé em Meio à <span>Tempestade</span>
+          </h1>
+
+          <p class="hero-description">
+            Uma história bíblica para aproximar as crianças da Palavra
+            de Deus e ensinar, de forma acessível, sobre fé, obediência,
+            confiança e um novo começo.
+          </p>
+
+          <ul class="hero-points">
+            <li><span class="check">✓</span> Uma história bíblica contada para crianças.</li>
+            <li><span class="check">✓</span> Aprendizados e momentos de reflexão.</li>
+            <li><span class="check">✓</span> Perguntas para recordar o que foi aprendido.</li>
+            <li><span class="check">✓</span> Uma oportunidade de leitura em família.</li>
+          </ul>
+
+          <a href="#comprar" class="button">
+            QUERO MEU E-BOOK · R$ 19,90 →
+          </a>
+
+          <p class="hero-note">
+            Produto digital em PDF. Acesso após a confirmação do pagamento
+            e a disponibilização do arquivo.
+          </p>
+        </div>
+
+        <div class="book-wrap">
+          <img
+            class="book-cover"
+            src="capa-noe.png"
+            alt="Capa do e-book Noé — A Fé em Meio à Tempestade, produzido por André Santos"
+            fetchpriority="high"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <div class="trust-bar">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <span>📖</span> HISTÓRIA BÍBLICA
+        </div>
+        <div class="trust-item">
+          <span>👨‍👩‍👧</span> APRENDIZADO EM FAMÍLIA
+        </div>
+        <div class="trust-item">
+          <span>💛</span> COMPRA COM PROPÓSITO
+        </div>
+      </div>
     </div>
 
     <section>
-      <h2>O que a criança vai aprender?</h2>
-      <div class="features">
-        <div class="feature">
-          <strong>🙏 Fé e confiança em Deus</strong>
-          Entender a importância de confiar em Deus mesmo nos
-          momentos difíceis.
-        </div>
-        <div class="feature">
-          <strong>❤️ Obediência e coragem</strong>
-          Aprender com as escolhas de Noé e sua família.
-        </div>
-        <div class="feature">
-          <strong>📚 Uma leitura para compartilhar</strong>
-          Um momento especial entre pais, responsáveis e crianças.
-        </div>
-      </div>
-    </section>
-
-    <section id="comprar">
-      <div class="buy">
-        <h2>Adquira seu e-book</h2>
-        <p>Preencha seus dados para continuar com a compra.</p>
-
-        <div class="price">R$ 19,90</div>
-        <p class="small">Pagamento único · E-book digital em PDF</p>
-
-        <form id="pedido">
-          <label for="nome">Seu nome</label>
-          <input id="nome" name="nome" autocomplete="name"
-            placeholder="Digite seu nome" required>
-
-          <label for="email">Seu melhor e-mail</label>
-          <input id="email" name="email" type="email"
-            autocomplete="email" placeholder="voce@email.com" required>
-
-          <p class="small">
-            Usaremos esses dados para identificar seu pedido e
-            entregar o produto. Consulte nossa política de privacidade
-            antes de concluir a compra.
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-tag">MUITO ALÉM DE UMA HISTÓRIA</span>
+          <h2>Uma leitura que pode deixar ensinamentos para a vida</h2>
+          <p>
+            Ajude a criança a conhecer uma das histórias mais marcantes
+            da Bíblia e converse com ela sobre os valores presentes
+            nessa jornada.
           </p>
+        </div>
 
-          <button class="button" type="submit">
-            CONTINUAR PARA PAGAMENTO
-          </button>
-          <p id="aviso" class="small" aria-live="polite"></p>
-        </form>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">🙏</div>
+            <h3>Fé e confiança em Deus</h3>
+            <p>
+              Conheça a jornada de Noé e converse sobre confiar em Deus
+              mesmo quando não entendemos tudo o que acontece.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">❤️</div>
+            <h3>Obediência e responsabilidade</h3>
+            <p>
+              Descubra como as escolhas de Noé e sua família ajudam a
+              conversar com as crianças sobre obediência e responsabilidade.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">💡</div>
+            <h3>Aprendizado e reflexão</h3>
+            <p>
+              Reforce a leitura com perguntas, versículos e momentos
+              para pensar no significado da história.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
-  </main>
 
-  <footer>
-    © 2026 · E-book infantil cristão · Todos os direitos reservados.
-  </footer>
+    <section class="chapters">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-tag">UMA JORNADA EM CINCO CAPÍTULOS</span>
+          <h2>O que a criança vai descobrir?</h2>
+          <p>
+            Acompanhe os principais acontecimentos da história de Noé
+            em uma jornada de aprendizado bíblico.
+          </p>
+        </div>
 
-  <script>
-    document.getElementById("pedido").addEventListener("submit", function(e) {
-      e.preventDefault();
-      document.getElementById("aviso").textContent =
-        "Estamos preparando o checkout seguro. A integração de pagamento ainda será configurada.";
-    });
-  </script>
-</body>
-</html>
+        <div class="chapter-list">
+
+          <article class="chapter reveal">
+            <div class="chapter-number">01</div>
+            <div>
+              <h3>A família de Noé e um novo começo</h3>
+              <p>
+                Conheça Noé, sua família e o contexto da história
+                apresentada em Gênesis.
+              </p>
+            </div>
+          </article>
+
+          <article class="chapter reveal">
+            <div class="chapter-number">02</div>
+            <div>
+              <h3>A construção da arca</h3>
+              <p>
+                Descubra a missão recebida por Noé e a importância
+                de ouvir e obedecer à orientação de Deus.
+              </p>
+            </div>
+          </article>
+
+          <article class="chapter reveal">
+            <div class="chapter-number">03</div>
+            <div>
+              <h3>Os animais e a entrada na arca</h3>
+           
