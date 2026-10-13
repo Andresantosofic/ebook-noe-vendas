@@ -286,94 +286,25 @@ footer strong{color:#fff}
 
 <div class="barra"><a class="btn" href="#comprar">Quero meu e-book · R$ 19,90</a></div>
 
-
 <script>
+/* ===== CONFIGURAÇÃO =====
+   Cole aqui o link de pagamento (Mercado Pago, Hotmart, Kiwify, Pix etc.).
+   Os dados do formulário serão enviados como parâmetros na URL. */
+var LINK_PAGAMENTO = "";
 
-const API_URL =
-  "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev";
-
-
-const form = document.getElementById("form");
-const msg = document.getElementById("msg");
-const botao = form.querySelector('button[type="submit"]');
-
-function aviso(texto, erro = true) {
-  msg.textContent = texto;
-  msg.style.display = "block";
-  msg.style.background = erro
-    ? "rgba(255,80,80,.12)"
-    : "rgba(255,201,40,.12)";
-  msg.style.color = erro ? "#ffb5b5" : "#fff0a6";
-}
-
-form.addEventListener("submit", async function (e) {
+var form = document.getElementById("form"), msg = document.getElementById("msg");
+function aviso(t){ msg.textContent = t; msg.style.display = "block"; }
+form.addEventListener("submit", function(e){
   e.preventDefault();
-
-  const dados = {
-    nome: form.elements["nome"].value.trim(),
-    email: form.elements["email"].value.trim(),
-    whatsapp: form.elements["whatsapp"].value.trim()
-  };
-
-  if (dados.nome.length < 3) {
-    return aviso("Digite seu nome completo.");
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dados.email)) {
-    return aviso("Digite um e-mail válido.");
-  }
-
-  if (dados.whatsapp.replace(/\D/g, "").length < 10) {
-    return aviso("Digite seu WhatsApp com DDD.");
-  }
-
-  botao.disabled = true;
-  botao.style.opacity = "0.7";
-  botao.textContent = "Preparando seu pagamento...";
-  msg.style.display = "none";
-
-  try {
-    const resposta = await fetch(
-      `${API_URL}/criar-pagamento`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dados)
-      }
-    );
-
-    const resultado = await resposta.json();
-
-    if (!resposta.ok || !resultado.sucesso) {
-      throw new Error(
-        resultado.erro || "Não foi possível iniciar o pagamento."
-      );
-    }
-
-    if (!resultado.checkout_url) {
-      throw new Error("O link de pagamento não foi recebido.");
-    }
-
-    aviso("Redirecionando para o pagamento seguro...", false);
-
-    window.location.assign(resultado.checkout_url);
-
-  } catch (erro) {
-    console.error("Erro ao iniciar pagamento:", erro);
-
-    aviso(
-      erro.message ||
-      "Não foi possível conectar ao sistema de pagamento. Tente novamente."
-    );
-
-    botao.disabled = false;
-    botao.style.opacity = "1";
-    botao.textContent = "Comprar e-book por R$ 19,90";
-  }
+  var d = { nome: form.nome.value.trim(), email: form.email.value.trim(), whatsapp: form.whatsapp.value.trim() };
+  if (d.nome.length < 3) return aviso("Digite seu nome completo.");
+  if (!/^\S+@\S+\.\S+$/.test(d.email)) return aviso("Digite um e-mail válido, como voce@exemplo.com.");
+  if (d.whatsapp.replace(/\D/g,"").length < 10) return aviso("Digite seu WhatsApp com DDD.");
+  if (!LINK_PAGAMENTO) return aviso("O pagamento ainda não foi configurado nesta página. Tente novamente em instantes.");
+  try { sessionStorage.setItem("noe_nome", d.nome); } catch (err) {}
+  var q = new URLSearchParams(d).toString();
+  window.location.href = LINK_PAGAMENTO + (LINK_PAGAMENTO.indexOf("?") > -1 ? "&" : "?") + q;
 });
 </script>
-
 </body>
 </html>
