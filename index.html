@@ -286,25 +286,83 @@ footer strong{color:#fff}
 
 <div class="barra"><a class="btn" href="#comprar">Quero meu e-book · R$ 19,90</a></div>
 
-<script>
-/* ===== CONFIGURAÇÃO =====
-   Cole aqui o link de pagamento (Mercado Pago, Hotmart, Kiwify, Pix etc.).
-   Os dados do formulário serão enviados como parâmetros na URL. */
-var LINK_PAGAMENTO = "";
 
-var form = document.getElementById("form"), msg = document.getElementById("msg");
-function aviso(t){ msg.textContent = t; msg.style.display = "block"; }
-form.addEventListener("submit", function(e){
+<script>
+const API_URL =
+  "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev";
+
+const form = document.getElementById("form");
+const msg = document.getElementById("msg");
+const botao = form.querySelector('button[type="submit"]');
+
+function aviso(texto) {
+  msg.textContent = texto;
+  msg.style.display = "block";
+}
+
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
-  var d = { nome: form.nome.value.trim(), email: form.email.value.trim(), whatsapp: form.whatsapp.value.trim() };
-  if (d.nome.length < 3) return aviso("Digite seu nome completo.");
-  if (!/^\S+@\S+\.\S+$/.test(d.email)) return aviso("Digite um e-mail válido, como voce@exemplo.com.");
-  if (d.whatsapp.replace(/\D/g,"").length < 10) return aviso("Digite seu WhatsApp com DDD.");
-  if (!LINK_PAGAMENTO) return aviso("O pagamento ainda não foi configurado nesta página. Tente novamente em instantes.");
-  try { sessionStorage.setItem("noe_nome", d.nome); } catch (err) {}
-  var q = new URLSearchParams(d).toString();
-  window.location.href = LINK_PAGAMENTO + (LINK_PAGAMENTO.indexOf("?") > -1 ? "&" : "?") + q;
+
+  const dados = {
+    nome: form.elements.nome.value.trim(),
+    email: form.elements.email.value.trim(),
+    whatsapp: form.elements.whatsapp.value.trim()
+  };
+
+  if (dados.nome.length < 3) {
+    aviso("Digite seu nome completo.");
+    return;
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(dados.email)) {
+    aviso("Digite um e-mail válido.");
+    return;
+  }
+
+  if (dados.whatsapp.replace(/\D/g, "").length < 10) {
+    aviso("Digite seu WhatsApp com DDD.");
+    return;
+  }
+
+  botao.disabled = true;
+  botao.textContent = "Preparando pagamento...";
+  msg.style.display = "none";
+
+  try {
+    const resposta = await fetch(
+      API_URL + "/criar-pagamento",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dados)
+      }
+    );
+
+    const resultado = await resposta.json();
+
+    if (!resposta.ok ||
+        resultado.sucesso !== true ||
+        !resultado.checkout_url) {
+      throw new Error(
+        resultado.erro || "Não foi possível iniciar o pagamento."
+      );
+    }
+
+    window.location.assign(resultado.checkout_url);
+
+  } catch (erro) {
+    aviso(
+      erro.message ||
+      "Falha na conexão. Tente novamente."
+    );
+
+    botao.disabled = false;
+    botao.textContent = "Comprar e-book por R$ 19,90";
+  }
 });
 </script>
+
 </body>
 </html>
