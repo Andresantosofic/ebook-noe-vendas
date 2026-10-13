@@ -286,12 +286,12 @@ footer strong{color:#fff}
   Depois de criar o produto, substitua o texto abaixo pelo link real do checkout.
   Exemplo: https://pay.kiwify.com.br/SEU-CODIGO
 */
-const LINK_CHECKOUT_KIWIFY = "COLE_AQUI_LINK_CHECKOUT_KIWIFY";
+const LINK_CHECKOUT_KIWIFY = "https://pay.kiwify.com.br/fnj2Mxv";
 
 document.querySelectorAll("[data-kiwify-checkout]").forEach((botao) => {
   botao.href = LINK_CHECKOUT_KIWIFY;
   botao.addEventListener("click", function (evento) {
-    if (!LINK_CHECKOUT_KIWIFY || LINK_CHECKOUT_KIWIFY === "COLE_AQUI_LINK_CHECKOUT_KIWIFY") {
+    if (!LINK_CHECKOUT_KIWIFY || LINK_CHECKOUT_KIWIFY === "https://pay.kiwify.com.br/fnj2Mxv") {
       evento.preventDefault();
       alert("O link de checkout da Kiwify ainda não foi configurado. Copie o link do checkout na Kiwify e substitua o texto COLE_AQUI_LINK_CHECKOUT_KIWIFY no index.html.");
     }
