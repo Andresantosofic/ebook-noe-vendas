@@ -1,468 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Conheça Noé — A Fé em Meio à Tempestade, um e-book bíblico infantil para aprender sobre fé, obediência, confiança e um novo começo.">
-  <title>Noé — A Fé em Meio à Tempestade | E-book</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#04070d">
+<meta name="description" content="Noé — A Fé em Meio à Tempestade: e-book bíblico infantil sobre fé, obediência e um novo começo. A cada 5 e-books vendidos, uma cesta básica vai para uma família.">
+<title>Noé — A Fé em Meio à Tempestade | E-book infantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#04070d; --noite:#08142a; --azul:#1f6fff; --azul2:#5ab0ff;
+  --ouro:#ffc928; --ouro2:#fff0a6; --texto:#d6e2f2; --muted:#93a8c4;
+  --borda:rgba(255,255,255,.12);
+  --titulo:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --corpo:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--preto);color:#fff;font-family:var(--corpo);line-height:1.6;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom,0)}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 36px));margin-inline:auto}
+h1,h2,h3{font-family:var(--titulo);line-height:1.05;margin:0}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
 
-  <style>
-    :root {
-      --fundo: #07111f;
-      --fundo-2: #0d2035;
-      --azul: #1c5b8e;
-      --azul-claro: #58a6e7;
-      --amarelo: #ffcf35;
-      --branco: #f8fafc;
-      --texto: #d7e2ef;
-      --muted: #9eb0c5;
-      --borda: rgba(255,255,255,.12);
-      --raio: 22px;
-      --sombra: 0 18px 55px rgba(0,0,0,.28);
-    }
+/* topo */
+.topo{position:sticky;top:0;z-index:30;background:rgba(4,7,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:14px}
+.logo{font-family:var(--titulo);font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:.02em}
+.logo b{color:var(--ouro)}
+.mini{background:var(--ouro);color:#14110a;font-weight:800;font-size:.9rem;padding:9px 18px;border-radius:999px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.mini:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,201,40,.35)}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--fundo);
-      color: var(--branco);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    a { color: inherit; }
-    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+/* botão */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:14px 30px;border:0;border-radius:16px;background:linear-gradient(180deg,#ffe066,var(--ouro));color:#14110a;font:800 1.1rem var(--corpo);text-decoration:none;cursor:pointer;box-shadow:0 7px 0 #b88a00,0 14px 34px rgba(255,201,40,.3);transition:transform .15s,box-shadow .15s}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:brilho 3.6s ease-in-out infinite}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 0 #b88a00,0 20px 44px rgba(255,201,40,.45)}
+.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #b88a00}
+.btn.full{width:100%}
+@keyframes brilho{0%,55%{left:-70%}100%{left:130%}}
 
-    .topbar {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(7,17,31,.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--borda);
-    }
-    .nav {
-      min-height: 72px; display: flex; align-items: center;
-      justify-content: space-between; gap: 18px;
-    }
-    .brand {
-      font-size: 1rem; font-weight: 850; letter-spacing: .08em;
-      text-decoration: none; white-space: nowrap;
-    }
-    .brand span { color: var(--amarelo); }
-    .nav-cta {
-      color: var(--amarelo); text-decoration: none; font-weight: 800;
-      font-size: .9rem; transition: transform .2s, color .2s;
-    }
-    .nav-cta:hover { transform: translateY(-2px); color: #ffe58a; }
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:64px 0 90px;background:linear-gradient(180deg,#050a16,#0a1d3d 70%,#08142a)}
+.raios{position:absolute;inset:-30% -20% auto auto;width:140%;height:150%;z-index:-3;pointer-events:none;
+  background:conic-gradient(from 190deg at 85% 0%,transparent 0 6%,rgba(255,201,40,.30) 9%,transparent 13%,rgba(255,201,40,.2) 17%,transparent 22%,rgba(255,225,120,.26) 26%,transparent 31%);
+  animation:raios 9s ease-in-out infinite alternate;mix-blend-mode:screen}
+@keyframes raios{from{opacity:.55;transform:rotate(-2deg)}to{opacity:1;transform:rotate(2deg)}}
+.chuva{position:absolute;inset:0;z-index:-2;opacity:.25;pointer-events:none;background:repeating-linear-gradient(105deg,transparent 0 14px,rgba(150,200,255,.5) 15px,transparent 16px 38px);background-size:140px 140px;animation:chuva .7s linear infinite}
+@keyframes chuva{to{background-position:-40px 140px}}
+.relampago{position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 0,rgba(180,215,255,.55),transparent 55%);opacity:0;pointer-events:none;animation:rel 11s infinite}
+@keyframes rel{0%,92%,100%{opacity:0}93%{opacity:.9}94%{opacity:.1}95.5%{opacity:.75}98%{opacity:0}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.selo{display:inline-block;padding:7px 16px;border:1px solid rgba(90,176,255,.6);border-radius:999px;background:rgba(31,111,255,.15);color:var(--azul2);font-weight:800;font-size:.9rem}
+.hero h1{margin:18px 0 6px;font-size:clamp(5.2rem,17vw,10rem);font-weight:800;letter-spacing:-.04em;background:linear-gradient(180deg,#fff3a3 5%,var(--ouro) 45%,#c98a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 0 rgba(0,0,0,.55)) drop-shadow(0 0 28px rgba(255,201,40,.35))}
+.hero h2{font-size:clamp(1.6rem,4.2vw,2.6rem);font-weight:800;color:var(--azul2);text-shadow:0 0 24px rgba(31,111,255,.7)}
+.lead{font-size:1.15rem;color:var(--texto);max-width:560px;margin:18px 0 22px}
+.checks{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:8px}
+.checks li{display:flex;gap:10px}
+.checks li::before{content:"✓";color:var(--ouro);font-weight:900}
+.preco{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.preco small{display:block;color:var(--muted);font-size:.85rem}
+.preco strong{font:800 2.4rem var(--titulo);color:var(--ouro);line-height:1}
+.nota{color:var(--muted);font-size:.85rem;margin:14px 0 0}
+.livro-box{position:relative;display:grid;place-items:center;perspective:1100px}
+.livro-box::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,201,40,.5),rgba(31,111,255,.25) 50%,transparent 70%);filter:blur(30px);animation:pulso 4s ease-in-out infinite}
+.livro{position:relative;width:min(100%,430px);height:auto;filter:drop-shadow(0 34px 34px rgba(0,0,0,.65));animation:flutuar 5s ease-in-out infinite;transition:transform .4s}
+.livro:hover{transform:rotateY(-8deg) scale(1.03)}
+.sombra{position:absolute;bottom:-4%;width:55%;height:26px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(14px);animation:sombra 5s ease-in-out infinite}
+@keyframes flutuar{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+@keyframes sombra{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(.78);opacity:.45}}
+@keyframes pulso{0%,100%{opacity:.7;transform:scale(.95)}50%{opacity:1;transform:scale(1.08)}}
+.entra{animation:entra .8s cubic-bezier(.2,.8,.2,1) both}
+.entra.d2{animation-delay:.15s}.entra.d3{animation-delay:.3s}
+@keyframes entra{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-    .hero {
-      position: relative; isolation: isolate; overflow: hidden;
-      padding: 76px 0 82px;
-      background:
-        radial-gradient(ellipse at 82% 20%, rgba(28,91,142,.62), transparent 42%),
-        radial-gradient(ellipse at 15% 75%, rgba(22,65,105,.55), transparent 44%),
-        linear-gradient(135deg, #081321, #102c47 58%, #07111f);
-    }
-    .hero::before {
-      content: ""; position: absolute; inset: 0; z-index: -1; opacity: .18;
-      background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, black, transparent);
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.04fr .96fr;
-      gap: 48px; align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 9px 15px; border: 1px solid rgba(255,207,53,.45);
-      border-radius: 999px; color: var(--amarelo);
-      background: rgba(255,207,53,.07); text-transform: uppercase;
-      font-size: .75rem; font-weight: 850; letter-spacing: .13em;
-    }
-    h1 {
-      margin: 22px 0 18px; font-size: clamp(2.45rem, 5.3vw, 4.5rem);
-      line-height: 1.07; letter-spacing: -.055em;
-    }
-    h1 span { color: var(--amarelo); }
-    .lead { color: var(--texto); font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 650px; }
-    .benefits { display: grid; gap: 11px; margin: 26px 0 30px; padding: 0; list-style: none; }
-    .benefits li { display: flex; align-items: flex-start; gap: 11px; color: #edf4fc; }
-    .check { color: var(--amarelo); font-weight: 900; flex: 0 0 auto; }
-    .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 58px; padding: 15px 24px; border: 0; border-radius: 15px;
-      background: var(--amarelo); color: #111827; text-decoration: none;
-      font-weight: 900; font-size: 1rem; cursor: pointer;
-      box-shadow: 0 9px 0 rgba(166,119,0,.16);
-      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
-    }
-    .button:hover { transform: translateY(-4px); box-shadow: 0 13px 24px rgba(255,207,53,.2); filter: brightness(1.04); }
-    .button:active { transform: translateY(0) scale(.99); }
-    .button.full { width: 100%; }
-    .small-note { color: var(--muted); font-size: .86rem; margin: 14px 0 0; }
-    .cover-wrap { display: flex; justify-content: center; align-items: center; perspective: 1000px; }
-    .cover {
-      width: min(100%, 430px); height: auto; display: block; object-fit: contain;
-      filter: drop-shadow(0 26px 36px rgba(0,0,0,.42));
-      animation: floatBook 5s ease-in-out infinite;
-      transition: transform .35s ease;
-    }
-    .cover:hover { transform: rotateY(-4deg) rotateX(2deg) scale(1.025); }
-    @keyframes floatBook { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+/* impacto */
+.impacto{padding:70px 0;background:linear-gradient(180deg,#08142a,#04070d)}
+.impacto-card{position:relative;isolation:isolate;overflow:hidden;max-width:980px;margin:auto;text-align:center;padding:clamp(28px,5vw,56px) clamp(18px,5vw,56px);border-radius:30px;background:linear-gradient(140deg,#102a52,#060b16 60%,#2b2308);border:2px solid rgba(255,201,40,.8);box-shadow:0 0 40px rgba(255,201,40,.25),0 24px 60px rgba(0,0,0,.5);animation:halo 3.2s ease-in-out infinite}
+.impacto-card::before{content:"";position:absolute;inset:-60%;z-index:-1;background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,224,102,.45) 80%,transparent 90%);animation:gira 6s linear infinite}
+.impacto-card::after{content:"";position:absolute;inset:3px;z-index:-1;border-radius:27px;background:linear-gradient(140deg,#0e2447,#060b16 60%,#241d07)}
+@keyframes gira{to{transform:rotate(360deg)}}
+@keyframes halo{50%{box-shadow:0 0 70px rgba(255,201,40,.45),0 24px 60px rgba(0,0,0,.5)}}
+.impacto h2{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;margin:10px 0 14px;text-wrap:balance}
+.impacto h2 em{font-style:normal;color:var(--ouro);text-shadow:0 0 26px rgba(255,201,40,.55)}
+.impacto p{max-width:640px;margin:0 auto;color:var(--texto);font-size:1.12rem}
+.corrente{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:30px 0 8px}
+.slot{width:54px;height:66px;display:grid;place-items:center;font-size:1.7rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);opacity:.3;filter:grayscale(1);animation:acende 8s infinite}
+.slot:nth-child(2){animation-delay:.7s}.slot:nth-child(3){animation-delay:1.4s}.slot:nth-child(4){animation-delay:2.1s}.slot:nth-child(5){animation-delay:2.8s}
+.igual{font:800 1.8rem var(--titulo);color:var(--ouro);padding:0 6px}
+.slot.cesta{width:76px;height:76px;font-size:2.4rem;animation-delay:3.8s}
+@keyframes acende{0%,3%{opacity:.3;filter:grayscale(1);box-shadow:none}8%,82%{opacity:1;filter:none;border-color:var(--ouro);box-shadow:0 0 22px rgba(255,201,40,.6)}92%,100%{opacity:.3;filter:grayscale(1);box-shadow:none}}
+.legenda{font-weight:800;color:var(--ouro2)}
 
-    /* Card de impacto social: brilho dourado nas bordas e destaque visual */
-    .impact-band {
-      position: relative; isolation: isolate; overflow: hidden;
-      padding: 64px 0; background:
-        radial-gradient(ellipse at 50% 50%, rgba(255,207,53,.13), transparent 65%),
-        linear-gradient(180deg, #07111f, #0b1b2e 50%, #07111f);
-    }
-    .impact-inner {
-      position: relative; isolation: isolate; overflow: hidden;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 12px; text-align: center; max-width: 900px; margin: 0 auto;
-      padding: clamp(28px, 5vw, 52px) clamp(20px, 5vw, 58px);
-      border-radius: 28px; color: #fff8dc;
-      background: linear-gradient(135deg, rgba(19,43,67,.98), rgba(7,17,31,.98) 58%, rgba(35,35,20,.98));
-      border: 1px solid rgba(255,207,53,.75);
-      box-shadow: 0 0 0 1px rgba(255,207,53,.10), 0 0 24px rgba(255,207,53,.18), 0 18px 55px rgba(0,0,0,.38);
-      animation: impactPulse 3.2s ease-in-out infinite;
-    }
-    .impact-inner::before {
-      content: ""; position: absolute; z-index: -1; inset: -2px; padding: 2px;
-      border-radius: inherit; pointer-events: none;
-      background: linear-gradient(115deg, transparent 8%, rgba(255,207,53,.15) 24%, #fff1a8 36%, #ffcf35 48%, transparent 62%, rgba(88,166,231,.28) 80%, transparent 94%);
-      background-size: 250% 250%; animation: borderShine 5s linear infinite;
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-    }
-    .impact-icon {
-      display: grid; place-items: center; width: 66px; height: 66px; border-radius: 22px;
-      color: #171a20; font-size: 2rem; background: linear-gradient(145deg, #fff0a0, var(--amarelo));
-      box-shadow: 0 0 28px rgba(255,207,53,.32); transform: rotate(-5deg);
-    }
-    .impact-eyebrow { color: var(--amarelo); text-transform: uppercase; letter-spacing: .18em; font-weight: 900; font-size: .75rem; }
-    .impact-inner strong {
-      display: block; max-width: 760px; margin: 2px 0 0;
-      font-size: clamp(1.65rem, 4.2vw, 3rem); line-height: 1.12; letter-spacing: -.045em;
-      text-wrap: balance; color: #fff; text-shadow: 0 0 22px rgba(255,207,53,.12);
-    }
-    .impact-inner strong span { color: var(--amarelo); }
-    .impact-inner p { max-width: 650px; margin: 2px 0 0; color: #d7e2ef; font-size: clamp(1rem, 2vw, 1.14rem); line-height: 1.65; }
-    .impact-footnote { margin-top: 8px; padding: 8px 14px; border-radius: 999px; color: #ffdf70; background: rgba(255,207,53,.08); border: 1px solid rgba(255,207,53,.2); font-size: .82rem; font-weight: 750; }
-    @keyframes borderShine { 0% { background-position: 100% 50%; } 100% { background-position: -150% 50%; } }
-    @keyframes impactPulse { 0%,100% { box-shadow: 0 0 0 1px rgba(255,207,53,.10), 0 0 22px rgba(255,207,53,.14), 0 18px 55px rgba(0,0,0,.38); } 50% { box-shadow: 0 0 0 1px rgba(255,207,53,.2), 0 0 34px rgba(255,207,53,.27), 0 18px 55px rgba(0,0,0,.38); } }
+/* seções */
+section{padding:80px 0}
+.titulo-sec{text-align:center;max-width:720px;margin:0 auto 44px}
+.titulo-sec h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800}
+.titulo-sec p{color:var(--muted);font-size:1.1rem;margin:12px 0 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{position:relative;overflow:hidden;padding:28px;border-radius:24px;border:1px solid var(--borda);background:linear-gradient(150deg,rgba(31,111,255,.18),rgba(255,255,255,.03));transition:transform .3s,border-color .3s,box-shadow .3s}
+.card::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,240,166,.22),transparent);transform:skewX(-20deg);animation:brilho 7s ease-in-out infinite}
+.card:nth-child(2)::after{animation-delay:1.2s}.card:nth-child(3)::after{animation-delay:2.4s}
+.card:hover{transform:translateY(-8px);border-color:var(--ouro);box-shadow:0 18px 50px rgba(255,201,40,.2)}
+.icone{width:58px;height:58px;display:grid;place-items:center;font-size:1.7rem;border-radius:16px;background:linear-gradient(145deg,#ffe066,var(--ouro));margin-bottom:18px;box-shadow:0 0 24px rgba(255,201,40,.4)}
+.card h3{font-size:1.4rem;margin-bottom:8px}
+.card p{margin:0;color:var(--texto)}
 
-    section { padding: 78px 0; }
-    .section-heading { text-align: center; max-width: 760px; margin: 0 auto 38px; }
-    .kicker { color: var(--amarelo); text-transform: uppercase; letter-spacing: .14em; font-weight: 850; font-size: .76rem; }
-    h2 { font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.15; letter-spacing: -.035em; margin: 10px 0 13px; }
-    .section-heading p { color: var(--muted); margin: 0; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card {
-      padding: 25px; border: 1px solid var(--borda); border-radius: var(--raio);
-      background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
-      box-shadow: var(--sombra); transition: transform .25s ease, border-color .25s ease, background .25s ease;
-    }
-    .card:hover { transform: translateY(-7px); border-color: rgba(255,207,53,.55); background: rgba(28,91,142,.2); }
-    .card-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: rgba(255,207,53,.12); color: var(--amarelo); font-size: 1.4rem; margin-bottom: 16px; }
-    .card h3 { margin: 0 0 9px; font-size: 1.12rem; }
-    .card p { color: var(--muted); margin: 0; font-size: .96rem; }
+.dentro{background:linear-gradient(180deg,var(--preto),#08142a 50%,var(--preto))}
+.dentro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.dentro h2{font-size:clamp(2rem,4.6vw,3rem);font-weight:800}
+.dentro .lead{margin:16px 0 26px}
+.caps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:cap}
+.caps li{counter-increment:cap;display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:18px;border:1px solid var(--borda);background:rgba(255,255,255,.04);transition:border-color .25s,transform .25s}
+.caps li:hover{border-color:var(--azul2);transform:translateX(6px)}
+.caps li::before{content:counter(cap);flex:0 0 44px;height:44px;display:grid;place-items:center;border-radius:50%;background:var(--azul);font:800 1.3rem var(--titulo);box-shadow:0 0 18px rgba(31,111,255,.6)}
+.caps b{display:block;font-size:1.08rem}
+.caps span{color:var(--muted);font-size:.93rem}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.tags span{padding:7px 14px;border-radius:999px;background:rgba(255,201,40,.1);border:1px solid rgba(255,201,40,.35);color:var(--ouro2);font-weight:700;font-size:.88rem}
 
-    .learn { background: #0a1727; border-block: 1px solid var(--borda); }
-    .learn-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 38px; align-items: center; }
-    .learn-panel {
-      border: 1px solid rgba(88,166,231,.28); border-radius: var(--raio); padding: 30px;
-      background: linear-gradient(145deg, rgba(28,91,142,.28), rgba(255,255,255,.025));
-    }
-    .learn-panel h3 { margin-top: 0; font-size: 1.4rem; }
-    .learn-list { padding: 0; margin: 0; list-style: none; display: grid; gap: 15px; }
-    .learn-list li { display: flex; gap: 12px; color: var(--texto); }
-    .learn-list b { color: var(--amarelo); }
+/* compra */
+.compra{background:radial-gradient(ellipse at 50% 0,rgba(31,111,255,.35),transparent 60%)}
+.caixa{position:relative;max-width:700px;margin:auto;padding:clamp(24px,5vw,46px);border-radius:28px;background:#081224;border:2px solid rgba(255,201,40,.55);box-shadow:0 0 50px rgba(255,201,40,.15),0 24px 60px rgba(0,0,0,.5)}
+.caixa h2{text-align:center;font-size:clamp(1.8rem,4.6vw,2.6rem);font-weight:800}
+.caixa .intro{text-align:center;color:var(--muted);margin:10px 0 0}
+.valor{text-align:center;margin:22px 0}
+.valor strong{display:block;font:800 clamp(3.4rem,10vw,4.6rem) var(--titulo);color:var(--ouro);line-height:1;text-shadow:0 0 30px rgba(255,201,40,.45)}
+.valor small{color:var(--muted)}
+.bonus{display:flex;gap:12px;align-items:center;padding:14px 16px;margin:0 0 22px;border-radius:16px;background:rgba(255,201,40,.1);border:1px dashed rgba(255,201,40,.6);color:var(--ouro2);font-weight:700}
+.bonus span{font-size:1.8rem}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.campo{display:grid;gap:6px}.campo.largo{grid-column:1/-1}
+label{font-weight:800;font-size:.92rem}
+input{width:100%;min-height:52px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#040a16;color:#fff;font:inherit;transition:border-color .2s,box-shadow .2s}
+input:focus{outline:none;border-color:var(--azul2);box-shadow:0 0 0 4px rgba(90,176,255,.2)}
+.priv{color:var(--muted);font-size:.82rem;margin:14px 0 18px}
+.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,201,40,.12);color:var(--ouro2);font-size:.93rem}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.passo{padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--borda);font-size:.9rem;color:var(--muted)}
+.passo b{display:block;color:#fff;font-size:1rem}
 
-    .purchase { background: radial-gradient(ellipse at 50% 0, rgba(28,91,142,.3), transparent 55%); }
-    .purchase-box {
-      max-width: 760px; margin: auto; padding: clamp(22px, 5vw, 42px);
-      background: #0c1b2d; border: 1px solid rgba(255,207,53,.25);
-      border-radius: 26px; box-shadow: var(--sombra);
-    }
-    .purchase-box h2 { text-align: center; }
-    .purchase-intro { text-align: center; color: var(--muted); }
-    .price { text-align: center; margin: 23px 0; }
-    .price small { color: var(--muted); display: block; }
-    .price strong { font-size: 3rem; line-height: 1.15; color: var(--amarelo); letter-spacing: -.04em; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
-    .field { display: grid; gap: 7px; }
-    .field.wide { grid-column: 1 / -1; }
-    label { font-size: .9rem; color: #edf4fc; font-weight: 700; }
-    input {
-      width: 100%; min-height: 50px; border: 1px solid rgba(255,255,255,.18);
-      border-radius: 12px; padding: 12px 14px; background: #071321; color: white;
-      font: inherit; outline: none; transition: border-color .2s, box-shadow .2s;
-    }
-    input:focus { border-color: var(--azul-claro); box-shadow: 0 0 0 3px rgba(88,166,231,.15); }
-    .privacy { color: var(--muted); font-size: .8rem; margin: 13px 0 20px; }
-    .form-message { display: none; margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(255,207,53,.1); color: var(--amarelo); font-size: .9rem; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: passo; }
-    .step { padding: 22px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--borda); }
-    .step::before { counter-increment: passo; content: "0" counter(passo); color: var(--amarelo); font-weight: 900; font-size: 1.3rem; }
-    .step h3 { margin: 8px 0; font-size: 1rem; }
-    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
-    footer { border-top: 1px solid var(--borda); padding: 27px 0; color: var(--muted); text-align: center; font-size: .85rem; }
-    footer strong { color: var(--branco); }
+footer{padding:30px 0 100px;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--borda)}
+footer strong{color:#fff}
 
-    .reveal { opacity: 1; transform: none; }
-    .js-reveal .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
-    .js-reveal .reveal.visible { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-    }
-    @media (max-width: 820px) {
-      .hero { padding: 48px 0 58px; }
-      .hero-grid, .learn-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 34px; }
-      .hero-copy { text-align: center; }
-      .lead { margin-inline: auto; }
-      .benefits { text-align: left; max-width: 540px; margin-inline: auto; margin-top: 24px; }
-      .hero-copy .button { width: 100%; }
-      .cover-wrap { grid-row: 1; }
-      .cover { max-width: 310px; }
-      .cards { grid-template-columns: 1fr; }
-      .learn-grid { gap: 22px; }
-      section { padding: 58px 0; }
-    }
-    @media (max-width: 520px) {
-      .container { width: min(100% - 28px, 1120px); }
-      .nav { min-height: 62px; }
-      .brand { font-size: .88rem; }
-      .nav-cta { font-size: .76rem; }
-      .eyebrow { font-size: .66rem; letter-spacing: .08em; }
-      h1 { font-size: clamp(2.25rem, 10vw, 3.1rem); }
-      .impact-inner { flex-direction: column; gap: 5px; }
-      .form-grid, .steps { grid-template-columns: 1fr; }
-      .field.wide { grid-column: auto; }
-      .price strong { font-size: 2.6rem; }
-    }
-  </style>
+/* barra fixa no celular */
+.barra{display:none}
+@media (max-width:820px){
+  .hero{padding:36px 0 60px}
+  .hero-grid,.dentro-grid,.cards{grid-template-columns:1fr}
+  .hero-copy{text-align:center}
+  .lead{margin-inline:auto}
+  .checks{text-align:left;max-width:420px;margin-inline:auto}
+  .preco{justify-content:center}
+  .livro-box{grid-row:1;max-width:320px;margin-inline:auto}
+  section{padding:56px 0}
+  .barra{display:flex;position:fixed;inset:auto 0 0 0;z-index:40;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0));background:rgba(4,7,13,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(255,201,40,.4)}
+  .barra .btn{width:100%;min-height:52px;font-size:1rem;box-shadow:0 5px 0 #b88a00}
+}
+@media (max-width:520px){
+  .campos,.passos{grid-template-columns:1fr}
+  .campo.largo{grid-column:auto}
+  .slot{width:46px;height:58px}.slot.cesta{width:62px;height:62px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .slot{opacity:1;filter:none}
+}
+</style>
 </head>
-
 <body>
-  <header class="topbar">
-    <nav class="nav container" aria-label="Navegação principal">
-      <a class="brand" href="#inicio">NOÉ <span>· E-BOOK</span></a>
-      <a class="nav-cta" href="#comprar">ADQUIRIR E-BOOK ↓</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">✦ Uma aventura bíblica infantil</div>
-          <h1>Noé — A Fé em Meio à <span>Tempestade</span></h1>
-          <p class="lead">Uma história bíblica para aproximar as crianças da Palavra de Deus e ensinar, de forma acessível, sobre fé, obediência, confiança e um novo começo.</p>
-          <ul class="benefits">
-            <li><span class="check">✓</span><span>Uma história bíblica contada para crianças.</span></li>
-            <li><span class="check">✓</span><span>Aprendizados e momentos de reflexão.</span></li>
-            <li><span class="check">✓</span><span>Perguntas para recordar o que foi aprendido.</span></li>
-            <li><span class="check">✓</span><span>Uma oportunidade de leitura em família.</span></li>
-          </ul>
-          <a class="button" href="#comprar">QUERO MEU E-BOOK · R$ 19,90 →</a>
-          <p class="small-note">Produto digital em PDF. A entrega depende da confirmação do pagamento e da configuração do sistema de vendas.</p>
-        </div>
+<header class="topo">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Noé <b>e-book</b></a>
+    <a class="mini" href="#comprar">Quero o e-book</a>
+  </div>
+</header>
 
-        <div class="cover-wrap">
-          <!-- O arquivo da capa deve estar na mesma pasta do index.html e se chamar exatamente capa-noe.png. -->
-          <img class="cover" src="./capa-noe.png" alt="Capa do e-book Noé — A Fé em Meio à Tempestade, produzido por André Santos"
-               onerror="this.onerror=null;this.src='https://andresantosofic.github.io/ebook-noe-vendas/capa-noe.png';">
-        </div>
+<main>
+<section class="hero" id="inicio">
+  <div class="raios" aria-hidden="true"></div><div class="chuva" aria-hidden="true"></div><div class="relampago" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="selo entra">Aventura bíblica para crianças</span>
+      <h1 class="entra d2">Noé</h1>
+      <h2 class="entra d2">A fé em meio à tempestade</h2>
+      <p class="lead entra d3">Uma história de Gênesis contada para crianças, com versículos, perguntas e momentos de reflexão para ler em família.</p>
+      <ul class="checks entra d3">
+        <li>História bíblica em linguagem infantil</li>
+        <li>Versículo-chave, perguntas e reflexão em cada parte</li>
+        <li>PDF para ler no celular, tablet ou computador</li>
+      </ul>
+      <div class="preco entra d3">
+        <div><small>Pagamento único</small><strong>R$ 19,90</strong></div>
+        <a class="btn" href="#comprar">Quero meu e-book</a>
       </div>
-    </section>
-
-    <aside class="impact-band" aria-label="Impacto solidário de cada compra">
-      <div class="container">
-        <div class="impact-inner">
-          <div class="impact-icon" aria-hidden="true">💛</div>
-          <span class="impact-eyebrow">Sua compra pode transformar vidas</span>
-          <strong>A sua leitura pode colocar <span>comida na mesa</span> de uma família.</strong>
-          <p>A cada <b>5 exemplares vendidos</b> deste e-book, uma cesta básica é destinada a uma família. Você leva uma história de fé para uma criança e ainda ajuda essa corrente de solidariedade a chegar mais longe.</p>
-          <div class="impact-footnote">♡ Um e-book. Uma missão. Mais esperança para uma família.</div>
-        </div>
-      </div>
-    </aside>
-
-    <section id="sobre">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="kicker">Uma leitura com propósito</span>
-          <h2>Mais do que uma história: ensinamentos para a vida</h2>
-          <p>Uma forma acolhedora de apresentar às crianças uma das histórias mais conhecidas da Bíblia e conversar sobre valores que podem levar para o dia a dia.</p>
-        </div>
-        <div class="cards">
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">📖</div>
-            <h3>Conheça a história de Noé</h3>
-            <p>Acompanhe a jornada de Noé, sua família e a construção da arca em uma narrativa pensada para o público infantil.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">🌱</div>
-            <h3>Aprenda valores importantes</h3>
-            <p>Converse com as crianças sobre fé, obediência, perseverança, confiança em Deus e esperança diante das dificuldades.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">👨‍👩‍👧‍👦</div>
-            <h3>Leia em família</h3>
-            <p>Transforme a leitura em um momento de proximidade, diálogo e aprendizado compartilhado entre adultos e crianças.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="learn">
-      <div class="container learn-grid">
-        <div class="reveal">
-          <span class="kicker">Para crianças de até 10 anos</span>
-          <h2>Uma maneira simples de aprender sobre fé</h2>
-          <p class="lead">A história abre espaço para perguntas, conversas e reflexões adequadas à infância, com a família acompanhando cada descoberta.</p>
-          <a class="button" href="#comprar">QUERO LER COM MINHA FAMÍLIA →</a>
-        </div>
-        <div class="learn-panel reveal">
-          <h3>O que você encontra no e-book</h3>
-          <ul class="learn-list">
-            <li><b>✓</b><span>Uma narrativa bíblica com linguagem infantil.</span></li>
-            <li><b>✓</b><span>Reflexões sobre confiar em Deus mesmo em tempos difíceis.</span></li>
-            <li><b>✓</b><span>Aprendizados sobre a família de Noé e um novo começo.</span></li>
-            <li><b>✓</b><span>Conteúdo digital em PDF para ler em celular, tablet ou computador.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="comprar" class="purchase">
-      <div class="container">
-        <div class="purchase-box reveal">
-          <span class="kicker" style="display:block;text-align:center">Garanta sua cópia digital</span>
-          <h2>Leve essa história para sua família</h2>
-          <p class="purchase-intro">Preencha seus dados para continuar com a compra.</p>
-          <div class="price">
-            <small>Pagamento único</small>
-            <strong>R$ 19,90</strong>
-            <small>E-book digital · PDF</small>
-          </div>
-
-          <form id="checkout-form">
-            <div class="form-grid">
-              <div class="field wide">
-                <label for="nome">Seu nome</label>
-                <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required>
-              </div>
-              <div class="field">
-                <label for="email">Seu e-mail</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
-              </div>
-              <div class="field">
-                <label for="whatsapp">Seu WhatsApp</label>
-                <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(DDD) 99999-9999" required>
-              </div>
-            </div>
-            <p class="privacy">Seus dados devem ser usados somente para processar a compra e viabilizar o envio do e-book. Não envie dados de cartão neste formulário.</p>
-            <button class="button full" type="submit">CONTINUAR PARA O PAGAMENTO →</button>
-            <div id="form-message" class="form-message" role="status"></div>
-          </form>
-          <p class="small-note" style="text-align:center">O pagamento precisa ser concluído na página segura do provedor. A entrega automática só funcionará depois que o checkout e o envio do PDF estiverem integrados.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="kicker">Como funciona</span>
-          <h2>Uma compra simples e digital</h2>
-        </div>
-        <div class="steps">
-          <article class="step reveal">
-            <h3>Informe seus dados</h3>
-            <p>Preencha nome, e-mail e WhatsApp para identificar o pedido.</p>
-          </article>
-          <article class="step reveal">
-            <h3>Conclua o pagamento</h3>
-            <p>Finalize o pagamento no checkout seguro do Mercado Pago quando ele estiver configurado.</p>
-          </article>
-          <article class="step reveal">
-            <h3>Receba o e-book</h3>
-            <p>Após a integração de confirmação e entrega, o PDF poderá ser enviado automaticamente ao e-mail informado.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <strong>Noé — A Fé em Meio à Tempestade</strong><br>
-      Produzido por André Santos · Produto digital em PDF
+      <p class="nota">Cada 5 e-books vendidos = 1 cesta básica para uma família.</p>
     </div>
-  </footer>
+    <div class="livro-box">
+      <img class="livro" src="./capa-noe.png" width="860" height="1150" alt="Capa do e-book Noé — A Fé em Meio à Tempestade, produzido por André Santos"
+        onerror="this.onerror=null;this.src='https://andresantosofic.github.io/ebook-noe-vendas/capa-noe.png';">
+      <div class="sombra" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Revela as seções ao rolar a página. Se o observador não existir, nada fica escondido.
-    document.documentElement.classList.add("js-reveal");
-    document.addEventListener("DOMContentLoaded", function () {
-      const elementos = document.querySelectorAll(".reveal");
+<aside class="impacto" aria-label="Impacto solidário">
+  <div class="wrap">
+    <div class="impacto-card">
+      <span class="selo" style="color:var(--ouro);border-color:rgba(255,201,40,.6);background:rgba(255,201,40,.1)">💛 Sua compra tem propósito</span>
+      <h2>Cada 5 e-books vendidos colocam <em>comida na mesa</em> de uma família</h2>
+      <p>Você leva uma história de fé para uma criança e, junto com outras pessoas, ajuda uma cesta básica a chegar a quem precisa.</p>
+      <div class="corrente" role="img" aria-label="5 e-books vendidos se transformam em 1 cesta básica">
+        <div class="slot">📘</div><div class="slot">📘</div><div class="slot">📘</div><div class="slot">📘</div><div class="slot">📘</div>
+        <span class="igual">=</span>
+        <div class="slot cesta">🧺</div>
+      </div>
+      <div class="legenda">5 e-books · 1 cesta básica · 1 família com esperança</div>
+    </div>
+  </div>
+</aside>
 
-      if (!("IntersectionObserver" in window)) {
-        elementos.forEach((elemento) => elemento.classList.add("visible"));
-        return;
-      }
+<section id="sobre">
+  <div class="wrap">
+    <div class="titulo-sec">
+      <h2>Mais que uma história: valores para a vida</h2>
+      <p>Uma das histórias mais conhecidas da Bíblia, num formato que as crianças entendem e os adultos gostam de ler junto.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="icone" aria-hidden="true">📖</div><h3>A história de Noé</h3><p>Acompanhe Noé, a arca, os animais, a chuva e a promessa do arco-íris, com base em Gênesis 6 a 9.</p></article>
+      <article class="card"><div class="icone" aria-hidden="true">⚓</div><h3>Fé e obediência</h3><p>Converse sobre confiar em Deus, escolher o que é certo e ter esperança nas tempestades do dia a dia.</p></article>
+      <article class="card"><div class="icone" aria-hidden="true">👨‍👩‍👧‍👦</div><h3>Leitura em família</h3><p>Cada parte pede que um adulto abra a Bíblia com a criança. Vira um momento de conversa e proximidade.</p></article>
+    </div>
+  </div>
+</section>
 
-      const observador = new IntersectionObserver((entradas) => {
-        entradas.forEach((entrada) => {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add("visible");
-            observador.unobserve(entrada.target);
-          }
-        });
-      }, { threshold: 0.05 });
+<section class="dentro">
+  <div class="wrap dentro-grid">
+    <div>
+      <h2>O que você encontra dentro do e-book</h2>
+      <p class="lead">Cada parte tem leitura bíblica, explicação simples, versículo-chave, o que aprendemos, perguntas para responder e uma reflexão.</p>
+      <div class="tags"><span>58 páginas</span><span>PDF</span><span>Até 10 anos</span></div>
+    </div>
+    <ol class="caps">
+      <li><div><b>Antes da grande chuva</b><span>Por que Deus escolheu Noé e qual foi a sua missão.</span></div></li>
+      <li><div><b>A entrada na arca</b><span>Os animais chegam, a chuva cai e a arca flutua.</span></div></li>
+      <li><div><b>Deus se lembra de Noé</b><span>As águas baixam, a pomba volta e a família sai da arca.</span></div></li>
+      <li><div><b>Uma promessa no céu</b><span>A bênção de Deus e o arco-íris.</span></div></li>
+      <li><div><b>Um novo começo</b><span>Nossas atitudes têm consequências.</span></div></li>
+    </ol>
+  </div>
+</section>
 
-      elementos.forEach((elemento) => observador.observe(elemento));
-    });
+<section class="compra" id="comprar">
+  <div class="wrap">
+    <div class="caixa">
+      <h2>Leve essa história para sua família</h2>
+      <p class="intro">Preencha seus dados para continuar com a compra.</p>
+      <div class="valor"><small>E-book digital em PDF · pagamento único</small><strong>R$ 19,90</strong></div>
+      <div class="bonus"><span aria-hidden="true">🧺</span><div>Sua compra conta para a próxima cesta básica: a cada 5 e-books, uma família é ajudada.</div></div>
+      <form id="form" novalidate>
+        <div class="campos">
+          <div class="campo largo"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required></div>
+          <div class="campo"><label for="email">Seu e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required></div>
+          <div class="campo"><label for="whatsapp">Seu WhatsApp</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(DDD) 99999-9999" required></div>
+        </div>
+        <p class="priv">Usamos seus dados só para processar a compra e enviar o e-book. Não digite dados de cartão neste formulário.</p>
+        <button class="btn full" type="submit">Comprar e-book por R$ 19,90</button>
+        <div class="msg" id="msg" role="alert"></div>
+      </form>
+      <div class="passos">
+        <div class="passo"><b>1. Preencha</b>Nome, e-mail e WhatsApp.</div>
+        <div class="passo"><b>2. Pague</b>Você segue para o pagamento.</div>
+        <div class="passo"><b>3. Receba</b>O PDF chega após a confirmação.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
-    // IMPORTANTE:
-    // Este formulário ainda NÃO processa pagamentos nem envia o PDF automaticamente.
-    // Para ativar o checkout, crie um link de pagamento do Mercado Pago e configure-o abaixo.
-    // Para entrega automática real, será necessário conectar uma automação/backend que valide
-    // a confirmação do pagamento antes de liberar o arquivo.
-    const LINK_PAGAMENTO_MERCADO_PAGO = "COLE_AQUI_SEU_LINK_DE_PAGAMENTO";
+<footer>
+  <div class="wrap"><strong>Noé — A Fé em Meio à Tempestade</strong><br>Produzido por André Santos · Produto digital em PDF</div>
+</footer>
 
-    document.getElementById("checkout-form").addEventListener("submit", function (evento) {
-      evento.preventDefault();
+<div class="barra"><a class="btn" href="#comprar">Quero meu e-book · R$ 19,90</a></div>
 
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const whatsapp = document.getElementById("whatsapp").value.trim();
-      const mensagem = document.getElementById("form-message");
+<script>
+/* ===== CONFIGURAÇÃO =====
+   Cole aqui o link de pagamento (Mercado Pago, Hotmart, Kiwify, Pix etc.).
+   Os dados do formulário serão enviados como parâmetros na URL. */
+var LINK_PAGAMENTO = "";
 
-      if (!nome || !email || !whatsapp) {
-        mensagem.style.display = "block";
-        mensagem.textContent = "Preencha seu nome, e-mail e WhatsApp para continuar.";
-        return;
-      }
-
-      // Evita redirecionar para um link de exemplo ou afirmar que houve pagamento.
-      if (!LINK_PAGAMENTO_MERCADO_PAGO.startsWith("https://")) {
-        mensagem.style.display = "block";
-        mensagem.textContent = "O formulário está pronto, mas o link de pagamento ainda precisa ser configurado. Nenhum pagamento foi realizado e seus dados não foram enviados.";
-        return;
-      }
-
-      // O link de pagamento genérico não recebe os dados deste formulário automaticamente.
-      // A integração para associar comprador, pedido e entrega precisa ser configurada separadamente.
-      window.location.href = LINK_PAGAMENTO_MERCADO_PAGO;
-    });
-  </script>
+var form = document.getElementById("form"), msg = document.getElementById("msg");
+function aviso(t){ msg.textContent = t; msg.style.display = "block"; }
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  var d = { nome: form.nome.value.trim(), email: form.email.value.trim(), whatsapp: form.whatsapp.value.trim() };
+  if (d.nome.length < 3) return aviso("Digite seu nome completo.");
+  if (!/^\S+@\S+\.\S+$/.test(d.email)) return aviso("Digite um e-mail válido, como voce@exemplo.com.");
+  if (d.whatsapp.replace(/\D/g,"").length < 10) return aviso("Digite seu WhatsApp com DDD.");
+  if (!LINK_PAGAMENTO) return aviso("O pagamento ainda não foi configurado nesta página. Tente novamente em instantes.");
+  var q = new URLSearchParams(d).toString();
+  window.location.href = LINK_PAGAMENTO + (LINK_PAGAMENTO.indexOf("?") > -1 ? "&" : "?") + q;
+});
+</script>
 </body>
 </html>
