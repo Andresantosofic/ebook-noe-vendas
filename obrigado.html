@@ -1,209 +1,276 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#04070d">
-<title>Concluir compra | Noé — A Fé em Meio à Tempestade</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{--preto:#04070d;--azul:#1f6fff;--azul2:#5ab0ff;--ouro:#ffc928;--ouro2:#fff0a6;--texto:#d6e2f2;--muted:#93a8c4;--borda:rgba(255,255,255,.12);
---titulo:"Baloo 2","Trebuchet MS",system-ui,sans-serif;--corpo:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:#fff;font-family:var(--corpo);line-height:1.6;overflow-x:hidden;
-background:radial-gradient(ellipse at 85% 0,rgba(255,201,40,.22),transparent 45%),radial-gradient(ellipse at 10% 100%,rgba(31,111,255,.35),transparent 50%),linear-gradient(180deg,#050a16,#0a1d3d)}
-h1,h2{font-family:var(--titulo);line-height:1.1;margin:0}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
-.topo{padding:18px;text-align:center;padding-top:calc(18px + env(safe-area-inset-top,0))}
-.logo{font-family:var(--titulo);font-weight:800;font-size:1.25rem;text-decoration:none}
-.logo b{color:var(--ouro)}
-main{flex:1;display:grid;place-items:center;padding:20px 16px 50px}
-.card{position:relative;isolation:isolate;overflow:hidden;width:min(560px,100%);text-align:center;padding:clamp(26px,6vw,46px);border-radius:28px;background:#081224;border:2px solid rgba(255,201,40,.55);box-shadow:0 0 50px rgba(255,201,40,.18),0 24px 60px rgba(0,0,0,.5)}
-.estado{display:none}
-.card[data-estado="verificando"] #verificando,.card[data-estado="pendente"] #pendente,.card[data-estado="aprovado"] #aprovado,.card[data-estado="recusado"] #recusado,.card[data-estado="semdados"] #semdados,.card[data-estado="erro"] #erro{display:block}
-h1{font-size:clamp(1.8rem,6vw,2.5rem);font-weight:800;margin:14px 0 10px}
-p{margin:0 0 14px;color:var(--texto)}
-.muted{color:var(--muted);font-size:.9rem}
-.icone{width:84px;height:84px;margin:0 auto;display:grid;place-items:center;border-radius:50%;font-size:2.4rem;font-weight:800}
-.ok{background:linear-gradient(145deg,#ffe066,var(--ouro));color:#14110a;box-shadow:0 0 0 0 rgba(255,201,40,.7);animation:onda 2s ease-out 3}
-.aviso{background:rgba(255,201,40,.14);border:2px solid var(--ouro)}
-.erro{background:rgba(255,90,90,.14);border:2px solid #ff6b6b}
-.spin{width:64px;height:64px;margin:0 auto;border-radius:50%;border:6px solid rgba(90,176,255,.25);border-top-color:var(--ouro);animation:gira 1s linear infinite}
-@keyframes gira{to{transform:rotate(360deg)}}
-@keyframes onda{to{box-shadow:0 0 0 38px rgba(255,201,40,0)}}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:60px;padding:14px 26px;border:0;border-radius:16px;background:linear-gradient(180deg,#ffe066,var(--ouro));color:#14110a;font:800 1.1rem var(--corpo);text-decoration:none;cursor:pointer;box-shadow:0 7px 0 #b88a00,0 14px 34px rgba(255,201,40,.3);transition:transform .15s,box-shadow .15s}
-.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:brilho 3.6s ease-in-out infinite}
-@keyframes brilho{0%,55%{left:-70%}100%{left:130%}}
-.btn:hover{transform:translateY(-3px)}
-.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #b88a00}
-.btn.sec{background:transparent;color:#fff;border:2px solid var(--azul2);box-shadow:none;margin-top:12px;min-height:52px}
-.btn.sec::after{display:none}
-.dicas{text-align:left;margin:22px 0 0;padding:16px 18px 16px 36px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid var(--borda);color:var(--texto);font-size:.93rem}
-.dicas li+li{margin-top:6px}
-.cesta{display:flex;gap:12px;align-items:center;text-align:left;margin-top:18px;padding:14px 16px;border-radius:16px;background:rgba(255,201,40,.1);border:1px dashed rgba(255,201,40,.6);color:var(--ouro2);font-weight:700;font-size:.93rem}
-.cesta span{font-size:1.8rem}
-footer{padding:0 16px 26px;text-align:center;color:var(--muted);font-size:.85rem}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style>
-</head>
-<body>
-<header class="topo"><a class="logo" href="./index.html">Noé <b>e-book</b></a></header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#071226">
+  <title>Confirmação da compra | E-book Noé</title>
 
-<main>
-<div class="card" id="card" data-estado="verificando" aria-live="polite">
+  <style>
+    * { box-sizing: border-box; }
 
-  <div class="estado" id="verificando">
-    <div class="spin" role="status" aria-label="Carregando"></div>
-    <h1>Confirmando seu pagamento…</h1>
-    <p>Isso leva só alguns segundos. Não feche esta página.</p>
-  </div>
-
-  <div class="estado" id="pendente">
-    <div class="icone aviso" aria-hidden="true">⏳</div>
-    <h1>Aguardando a confirmação</h1>
-    <p>Seu pagamento ainda não foi aprovado. Pagamentos por Pix costumam levar poucos minutos e boleto pode levar até 3 dias úteis.</p>
-    <p class="muted" id="pendInfo">Esta página verifica sozinha a cada poucos segundos.</p>
-    <button class="btn" type="button" id="btnVerificar">Verificar agora</button>
-  </div>
-
-  <div class="estado" id="aprovado">
-    <div class="icone ok" aria-hidden="true">✓</div>
-    <h1 id="titOk">Pagamento confirmado!</h1>
-    <p>Seu e-book <strong>Noé — A Fé em Meio à Tempestade</strong> está liberado. Toque no botão para baixar o PDF.</p>
-    <a class="btn" id="btnBaixar" href="#" download>Baixar meu e-book (PDF)</a>
-    <ul class="dicas">
-      <li>Salve o arquivo no celular ou no computador.</li>
-      <li>Para ler em família, abra o PDF e tenha uma Bíblia por perto.</li>
-      <li>Se o download não começar, toque no botão de novo.</li>
-    </ul>
-    <div class="cesta"><span aria-hidden="true">🧺</span><div>Obrigado! Sua compra conta para a próxima cesta básica: a cada 5 e-books vendidos, uma família é ajudada.</div></div>
-  </div>
-
-  <div class="estado" id="recusado">
-    <div class="icone erro" aria-hidden="true">✕</div>
-    <h1>O pagamento não foi aprovado</h1>
-    <p>Nenhum valor deve ser cobrado. Você pode tentar de novo com outra forma de pagamento.</p>
-    <a class="btn" href="./index.html#comprar">Tentar novamente</a>
-  </div>
-
-  <div class="estado" id="semdados">
-    <div class="icone aviso" aria-hidden="true">?</div>
-    <h1>Não encontramos sua compra</h1>
-    <p>Esta página abre depois do pagamento. Se você já pagou, use o link que chegou no seu e-mail ou volte para finalizar a compra.</p>
-    <a class="btn" href="./index.html#comprar">Ir para a compra</a>
-  </div>
-
-  <div class="estado" id="erro">
-    <div class="icone erro" aria-hidden="true">!</div>
-    <h1>Não conseguimos confirmar agora</h1>
-    <p>Houve uma falha de conexão ao verificar o pagamento. Se você já pagou, tente de novo em instantes.</p>
-    <button class="btn" type="button" id="btnTentar">Tentar de novo</button>
-  </div>
-
-  <a class="btn sec" id="suporte" href="#" style="display:none" target="_blank" rel="noopener">Falar com o suporte no WhatsApp</a>
-</div>
-</main>
-
-<footer>Produzido por André Santos · Produto digital em PDF</footer>
-
-<script>
-/* ===== CONFIGURAÇÃO ===== */
-
-var CFG = {
-  PDF: "./noe-fe-em-meio-a-tempestade.pdf",
-
-  API:
-    "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev/pedido",
-
-  WHATSAPP_SUPORTE: "",
-
-  INTERVALO_MS: 5000,
-  TENTATIVAS: 60
-};
-
-
-var card = document.getElementById("card"), tentativas = 0, timer = null;
-var q = new URLSearchParams(location.search);
-
-var pagId = q.get("ref") || "";
-
-var statusUrl = q.get("status") || q.get("collection_status") || q.get("payment_status") || "";
-
-function estado(e){ card.setAttribute("data-estado", e); }
-function normaliza(s){
-  s = String(s || "").toLowerCase();
-  if (/^(approved|aprovado|paid|pago|completed|success|authorized)$/.test(s)) return "aprovado";
-  if (/^(pending|in_process|pendente|waiting_payment|waiting|authorized_pending)$/.test(s)) return "pendente";
-  if (/^(rejected|cancelled|canceled|failure|failed|recusado|refused|refunded|charged_back)$/.test(s)) return "recusado";
-  return "";
-}
-
-try{
-  var nome = (sessionStorage.getItem("noe_nome") || "").trim().split(" ")[0];
-  if (nome) document.getElementById("titOk").textContent = "Pagamento confirmado, " + nome + "!";
-}catch(e){}
-
-if (/^\d{10,15}$/.test(CFG.WHATSAPP_SUPORTE)){
-  var s = document.getElementById("suporte");
-  s.href = "https://wa.me/" + CFG.WHATSAPP_SUPORTE + "?text=" + encodeURIComponent("Olá! Preciso de ajuda com meu e-book do Noé. Pagamento: " + (pagId || "sem número"));
-  s.style.display = "inline-flex";
-}
-
-function liberar(url){
-  var b = document.getElementById("btnBaixar");
-  b.href = url || CFG.PDF;
-  estado("aprovado");
-}
-
-function mostrar(st, url){
-  clearTimeout(timer);
-  if (st === "aprovado") return liberar(url);
-  if (st === "recusado") return estado("recusado");
-  if (st === "pendente"){
-    estado("pendente");
-    var info = document.getElementById("pendInfo");
-    if (CFG.API && tentativas < CFG.TENTATIVAS){
-      timer = setTimeout(verificar, CFG.INTERVALO_MS);
-    } else if (CFG.API){
-      info.textContent = "Ainda sem confirmação. Toque em “Verificar agora” quando pagar ou atualize esta página mais tarde.";
-    } else {
-      info.textContent = "Quando o pagamento for aprovado, volte pelo link que a plataforma enviar no seu e-mail.";
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      background:
+        radial-gradient(ellipse at top right, #453717 0%, transparent 38%),
+        radial-gradient(ellipse at bottom left, #123a79 0%, transparent 45%),
+        #050b17;
+      color: #f8fafc;
+      font-family: Arial, Helvetica, sans-serif;
     }
-    return;
-  }
-  estado("semdados");
-}
 
-function verificar(){
-  tentativas++;
-  if (!CFG.API){ return mostrar(normaliza(statusUrl)); }   // MODO SIMPLES
-  if (!pagId){ return estado("semdados"); }
-  
-fetch(
-  CFG.API +
-    (CFG.API.indexOf("?") > -1 ? "&" : "?") +
-    "ref=" + encodeURIComponent(pagId),
-  { cache: "no-store" }
-)
-  .then(function (r) {
-    if (!r.ok) throw new Error(r.status);
-    return r.json();
-  })
-  .then(function (d) {
-    mostrar(normaliza(d.status), d.download_url);
-  })
-  .catch(function () {
-    estado("erro");
-  });
-}
+    header {
+      text-align: center;
+      font-size: 19px;
+      font-weight: 800;
+    }
 
-document.getElementById("btnVerificar").onclick = function(){ tentativas = 0; estado("verificando"); verificar(); };
-document.getElementById("btnTentar").onclick = function(){ estado("verificando"); verificar(); };
-verificar();
-</script>
+    header span { color: #ffd338; }
+
+    main {
+      width: 100%;
+      max-width: 560px;
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid #a98210;
+      border-radius: 28px;
+      background: rgba(7, 18, 38, 0.96);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
+    }
+
+    .icone {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 22px;
+      border: 2px solid #ffd338;
+      border-radius: 50%;
+      font-size: 36px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(27px, 6vw, 38px);
+      line-height: 1.15;
+    }
+
+    p {
+      color: #d1d9e8;
+      line-height: 1.7;
+    }
+
+    #detalhe {
+      overflow-wrap: anywhere;
+      font-size: 14px;
+      color: #a9bad4;
+    }
+
+    .botao {
+      width: 100%;
+      min-height: 60px;
+      margin-top: 22px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 20px;
+      border: 0;
+      border-radius: 16px;
+      background: linear-gradient(#ffe46c, #ffc928);
+      box-shadow: 0 6px 0 #b88700;
+      color: #101010;
+      font-size: 17px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .botao:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .secundario {
+      display: inline-block;
+      margin-top: 26px;
+      color: #d1d9e8;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #9aacc8;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 420px) {
+      main { padding: 32px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>Noé <span>e-book</span></header>
+
+  <main>
+    <div class="icone" id="icone" aria-hidden="true">⌛</div>
+
+    <h1 id="titulo">Verificando seu pagamento</h1>
+
+    <p id="mensagem" aria-live="polite">
+      Estamos consultando o status do pedido no sistema de pagamentos.
+    </p>
+
+    <p id="detalhe">A consulta é automática.</p>
+
+    <a id="botaoDownload" class="botao" href="#" hidden>
+      Baixar meu e-book
+    </a>
+
+    <button id="botaoVerificar" class="botao" type="button">
+      Verificar agora
+    </button>
+
+    <a class="secundario" href="./">Voltar à página do e-book</a>
+  </main>
+
+  <footer>Produzido por André Santos · Produto digital em PDF</footer>
+
+  <script>
+    const API_URL =
+      "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev";
+
+    const parametros = new URLSearchParams(window.location.search);
+    const referencia = parametros.get("ref");
+
+    const icone = document.getElementById("icone");
+    const titulo = document.getElementById("titulo");
+    const mensagem = document.getElementById("mensagem");
+    const detalhe = document.getElementById("detalhe");
+    const botaoDownload = document.getElementById("botaoDownload");
+    const botaoVerificar = document.getElementById("botaoVerificar");
+
+    let temporizador = null;
+    let consultando = false;
+    let encerrado = false;
+
+    function mostrarErro(texto) {
+      icone.textContent = "!";
+      titulo.textContent = "Não foi possível verificar";
+      mensagem.textContent = texto;
+      detalhe.textContent =
+        "Tente verificar novamente. Não faça outra compra antes de conferir o pedido.";
+      botaoDownload.hidden = true;
+      botaoVerificar.hidden = false;
+      botaoVerificar.disabled = false;
+      botaoVerificar.textContent = "Tentar novamente";
+    }
+
+    function mostrarPendente() {
+      icone.textContent = "⌛";
+      titulo.textContent = "Aguardando a confirmação";
+      mensagem.textContent =
+        "Seu pagamento ainda não foi confirmado pelo sistema. Assim que a aprovação for registrada, o download será liberado.";
+      detalhe.textContent =
+        "A página consulta o pedido automaticamente a cada 5 segundos.";
+      botaoDownload.hidden = true;
+      botaoVerificar.hidden = false;
+      botaoVerificar.disabled = false;
+      botaoVerificar.textContent = "Verificar agora";
+    }
+
+    function mostrarAprovado(url) {
+      encerrado = true;
+      if (temporizador) clearInterval(temporizador);
+
+      icone.textContent = "✓";
+      titulo.textContent = "Pagamento confirmado!";
+      mensagem.textContent =
+        "Tudo certo! Seu e-book está disponível para baixar.";
+      detalhe.textContent = "Noé — A Fé em Meio à Tempestade";
+      botaoDownload.href = url;
+      botaoDownload.hidden = false;
+      botaoVerificar.hidden = true;
+    }
+
+    async function verificarPedido() {
+      if (consultando || encerrado) return;
+
+      if (!referencia || !/^[0-9a-f-]{36}$/i.test(referencia)) {
+        encerrado = true;
+        mostrarErro("A referência do pedido está ausente ou é inválida.");
+        return;
+      }
+
+      consultando = true;
+      botaoVerificar.disabled = true;
+      botaoVerificar.textContent = "Consultando...";
+
+      try {
+        const resposta = await fetch(
+          `${API_URL}/pedido?ref=${encodeURIComponent(referencia)}`,
+          {
+            method: "GET",
+            cache: "no-store",
+          }
+        );
+
+        const dados = await resposta.json().catch(() => ({}));
+
+        if (resposta.status === 404) {
+          encerrado = true;
+          if (temporizador) clearInterval(temporizador);
+          mostrarErro(
+            "O pedido não foi encontrado no armazenamento do sistema. A compra precisa ser investigada."
+          );
+          return;
+        }
+
+        if (!resposta.ok) {
+          throw new Error("O servidor não conseguiu consultar o pedido.");
+        }
+
+        if (dados.status === "approved" && dados.download_url) {
+          const urlDownload = new URL(dados.download_url, API_URL);
+
+          if (urlDownload.origin !== new URL(API_URL).origin) {
+            throw new Error("Endereço de download inválido.");
+          }
+
+          mostrarAprovado(urlDownload.href);
+          return;
+        }
+
+        mostrarPendente();
+      } catch (erro) {
+        console.error("Erro ao consultar pedido:", erro);
+        mensagem.textContent =
+          "Não foi possível consultar o servidor agora. O sistema tentará novamente.";
+        detalhe.textContent =
+          "Confira sua conexão. O download continua bloqueado até a confirmação.";
+        botaoVerificar.hidden = false;
+        botaoVerificar.disabled = false;
+        botaoVerificar.textContent = "Tentar novamente";
+      } finally {
+        consultando = false;
+      }
+    }
+
+    botaoVerificar.addEventListener("click", verificarPedido);
+
+    verificarPedido();
+    temporizador = setInterval(verificarPedido, 5000);
+  </script>
 </body>
 </html>
