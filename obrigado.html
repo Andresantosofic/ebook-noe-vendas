@@ -128,7 +128,9 @@ var CFG = {
 
 var card = document.getElementById("card"), tentativas = 0, timer = null;
 var q = new URLSearchParams(location.search);
-var pagId = q.get("payment_id") || q.get("collection_id") || q.get("transaction") || q.get("order_id") || q.get("ref") || "";
+
+var pagId = q.get("ref") || "";
+
 var statusUrl = q.get("status") || q.get("collection_status") || q.get("payment_status") || "";
 
 function estado(e){ card.setAttribute("data-estado", e); }
@@ -180,10 +182,23 @@ function verificar(){
   tentativas++;
   if (!CFG.API){ return mostrar(normaliza(statusUrl)); }   // MODO SIMPLES
   if (!pagId){ return estado("semdados"); }
-  fetch(CFG.API + (CFG.API.indexOf("?") > -1 ? "&" : "?") + "payment_id=" + encodeURIComponent(pagId), {cache:"no-store"})
-    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){ mostrar(normaliza(d.status), d.download_url); })
-    .catch(function(){ estado("erro"); });
+  
+fetch(
+  CFG.API +
+    (CFG.API.indexOf("?") > -1 ? "&" : "?") +
+    "ref=" + encodeURIComponent(pagId),
+  { cache: "no-store" }
+)
+  .then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  })
+  .then(function (d) {
+    mostrar(normaliza(d.status), d.download_url);
+  })
+  .catch(function () {
+    estado("erro");
+  });
 }
 
 document.getElementById("btnVerificar").onclick = function(){ tentativas = 0; estado("verificando"); verificar(); };
