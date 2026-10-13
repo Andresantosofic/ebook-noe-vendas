@@ -112,21 +112,19 @@ footer{padding:0 16px 26px;text-align:center;color:var(--muted);font-size:.85rem
 
 <script>
 /* ===== CONFIGURAÇÃO ===== */
+
 var CFG = {
-  // Endereço do PDF liberado. Use o nome do arquivo que você subiu junto com esta página.
   PDF: "./noe-fe-em-meio-a-tempestade.pdf",
 
-  // MODO SEGURO (recomendado): endereço do seu servidor que consulta o pagamento
-  // na plataforma e responde JSON: { "status": "approved" | "pending" | "rejected", "download_url": "https://..." }
-  // Deixe vazio para o MODO SIMPLES, que confia no status que a plataforma envia na URL.
-  API: "",
+  API:
+    "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev/pedido",
 
-  // WhatsApp de suporte, só números com DDI e DDD. Exemplo: "5511999999999". Vazio esconde o botão.
   WHATSAPP_SUPORTE: "",
 
-  INTERVALO_MS: 5000,   // de quanto em quanto tempo verificar um pagamento pendente
-  TENTATIVAS: 60        // máximo de verificações automáticas (60 x 5s = 5 minutos)
+  INTERVALO_MS: 5000,
+  TENTATIVAS: 60
 };
+
 
 var card = document.getElementById("card"), tentativas = 0, timer = null;
 var q = new URLSearchParams(location.search);
