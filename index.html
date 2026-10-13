@@ -257,23 +257,16 @@ footer strong{color:#fff}
   <div class="wrap">
     <div class="caixa">
       <h2>Leve essa história para sua família</h2>
-      <p class="intro">Preencha seus dados para continuar com a compra.</p>
+      <p class="intro">Clique no botão abaixo para comprar com segurança pela Kiwify.</p>
       <div class="valor"><small>E-book digital em PDF · pagamento único</small><strong>R$ 19,90</strong></div>
       <div class="bonus"><span aria-hidden="true">🧺</span><div>Sua compra conta para a próxima cesta básica: a cada 5 e-books, uma família é ajudada.</div></div>
-      <form id="form" novalidate>
-        <div class="campos">
-          <div class="campo largo"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required></div>
-          <div class="campo"><label for="email">Seu e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required></div>
-          <div class="campo"><label for="whatsapp">Seu WhatsApp</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(DDD) 99999-9999" required></div>
-        </div>
-        <p class="priv">Usamos seus dados só para processar a compra e enviar o e-book. Não digite dados de cartão neste formulário.</p>
-        <button class="btn full" type="submit">Comprar e-book por R$ 19,90</button>
-        <div class="msg" id="msg" role="alert"></div>
-      </form>
+      <p class="priv" style="text-align:center">Ao continuar, você será direcionado ao checkout seguro da Kiwify para concluir o pagamento. Após a confirmação, o acesso ao e-book será liberado conforme a configuração do produto na plataforma.</p>
+      <a class="btn full" href="COLE_AQUI_LINK_CHECKOUT_KIWIFY" data-kiwify-checkout>Comprar e-book por R$ 19,90</a>
+      <p class="nota" style="text-align:center">Pagamento processado pela Kiwify · Produto digital em PDF</p>
       <div class="passos">
-        <div class="passo"><b>1. Preencha</b>Nome, e-mail e WhatsApp.</div>
-        <div class="passo"><b>2. Pague</b>Você segue para o pagamento.</div>
-        <div class="passo"><b>3. Receba</b>O PDF chega após a confirmação.</div>
+        <div class="passo"><b>1. Continue</b>Clique no botão para abrir o checkout.</div>
+        <div class="passo"><b>2. Pague</b>Finalize o pagamento com as opções disponíveis.</div>
+        <div class="passo"><b>3. Receba</b>A Kiwify libera o conteúdo após a confirmação, conforme a entrega configurada.</div>
       </div>
     </div>
   </div>
@@ -288,79 +281,21 @@ footer strong{color:#fff}
 
 
 <script>
-const API_URL =
-  "https://ebook-noe-vendas-api-teste.contato-andresantosapps.workers.dev";
+/*
+  CONFIGURAÇÃO DA KIWIFY:
+  Depois de criar o produto, substitua o texto abaixo pelo link real do checkout.
+  Exemplo: https://pay.kiwify.com.br/SEU-CODIGO
+*/
+const LINK_CHECKOUT_KIWIFY = "COLE_AQUI_LINK_CHECKOUT_KIWIFY";
 
-const form = document.getElementById("form");
-const msg = document.getElementById("msg");
-const botao = form.querySelector('button[type="submit"]');
-
-function aviso(texto) {
-  msg.textContent = texto;
-  msg.style.display = "block";
-}
-
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const dados = {
-    nome: form.elements.nome.value.trim(),
-    email: form.elements.email.value.trim(),
-    whatsapp: form.elements.whatsapp.value.trim()
-  };
-
-  if (dados.nome.length < 3) {
-    aviso("Digite seu nome completo.");
-    return;
-  }
-
-  if (!/^\S+@\S+\.\S+$/.test(dados.email)) {
-    aviso("Digite um e-mail válido.");
-    return;
-  }
-
-  if (dados.whatsapp.replace(/\D/g, "").length < 10) {
-    aviso("Digite seu WhatsApp com DDD.");
-    return;
-  }
-
-  botao.disabled = true;
-  botao.textContent = "Preparando pagamento...";
-  msg.style.display = "none";
-
-  try {
-    const resposta = await fetch(
-      API_URL + "/criar-pagamento",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dados)
-      }
-    );
-
-    const resultado = await resposta.json();
-
-    if (!resposta.ok ||
-        resultado.sucesso !== true ||
-        !resultado.checkout_url) {
-      throw new Error(
-        resultado.erro || "Não foi possível iniciar o pagamento."
-      );
+document.querySelectorAll("[data-kiwify-checkout]").forEach((botao) => {
+  botao.href = LINK_CHECKOUT_KIWIFY;
+  botao.addEventListener("click", function (evento) {
+    if (!LINK_CHECKOUT_KIWIFY || LINK_CHECKOUT_KIWIFY === "COLE_AQUI_LINK_CHECKOUT_KIWIFY") {
+      evento.preventDefault();
+      alert("O link de checkout da Kiwify ainda não foi configurado. Copie o link do checkout na Kiwify e substitua o texto COLE_AQUI_LINK_CHECKOUT_KIWIFY no index.html.");
     }
-
-    window.location.assign(resultado.checkout_url);
-
-  } catch (erro) {
-    aviso(
-      erro.message ||
-      "Falha na conexão. Tente novamente."
-    );
-
-    botao.disabled = false;
-    botao.textContent = "Comprar e-book por R$ 19,90";
-  }
+  });
 });
 </script>
 
